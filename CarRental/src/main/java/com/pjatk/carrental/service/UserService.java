@@ -9,6 +9,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class UserService implements UserDetailsService {
@@ -26,10 +28,10 @@ public class UserService implements UserDetailsService {
         if(userExist){
             throw new IllegalStateException("Username taken, use different username");
         }
-
-        String encodedPassword = bCryptPasswordEncoder.encode(user.getPassword());
-        user.setPassword(encodedPassword);
         userRepository.save(user);
-        return "Working";
+        return "";
+    }
+    public List<User> getUsers(){
+        return userRepository.findAll();
     }
 }

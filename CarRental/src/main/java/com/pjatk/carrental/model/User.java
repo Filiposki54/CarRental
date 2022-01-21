@@ -1,6 +1,5 @@
 package com.pjatk.carrental.model;
 
-import com.pjatk.carrental.configuration.UserRole;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -15,7 +14,7 @@ import java.util.Collections;
 @Setter
 @EqualsAndHashCode
 @NoArgsConstructor
-public class User implements UserDetails {
+public class User implements UserDetails{
     @Id
     @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,20 +23,19 @@ public class User implements UserDetails {
     private String lastName;
     private String userName;
     private String password;
-    @Enumerated(EnumType.STRING)
-    private UserRole userRole;
+    private String role;
 
-    public User(String firstName, String lastName, String userName, String password, UserRole userRole) {
+    public User(String firstName, String lastName, String userName, String password, String role) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.userName = userName;
         this.password = password;
-        this.userRole = userRole;
+        this.role = "USER";
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(userRole.name());
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority("USER");
         return Collections.singletonList(authority);
     }
 

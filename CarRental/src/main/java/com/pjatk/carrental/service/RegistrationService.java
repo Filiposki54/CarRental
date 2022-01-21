@@ -1,8 +1,7 @@
 package com.pjatk.carrental.service;
 
-import com.pjatk.carrental.configuration.UserRole;
 import com.pjatk.carrental.model.User;
-import com.pjatk.carrental.registration.RegistrationRequest;
+import com.pjatk.carrental.model.RegistrationRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +15,7 @@ public class RegistrationService {
                 request.getLastName(),
                 request.getUserName(),
                 request.getPassword(),
-                UserRole.USER
+                "USER"
                 )
         );
     }

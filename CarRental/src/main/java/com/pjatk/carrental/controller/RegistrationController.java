@@ -1,21 +1,23 @@
 package com.pjatk.carrental.controller;
 
-import com.pjatk.carrental.registration.RegistrationRequest;
+import com.pjatk.carrental.model.RegistrationRequest;
 import com.pjatk.carrental.service.RegistrationService;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.jetbrains.annotations.NotNull;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
-@RestController
-@RequestMapping("/registration")
+@Controller
 @AllArgsConstructor
 public class RegistrationController {
-
     private RegistrationService registrationService;
-    @PostMapping
-    public String register(@RequestBody RegistrationRequest request){
-        return registrationService.register(request);
+    @PostMapping("/process_register")
+    public String register(@NotNull RegistrationRequest request){
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String encodedPassword = passwordEncoder.encode(request.getPassword());
+        request.setPassword(encodedPassword);
+        registrationService.register(request);
+        return "register_success";
     }
 }

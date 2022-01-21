@@ -7,9 +7,9 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-@Entity
-@Getter
 @Setter
+@Getter
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
 public class Car {
@@ -20,4 +20,7 @@ public class Car {
     private String plates;
     private Integer productionYear;
     private String model;
+    private String carBrand;
+    private String pricePerDay;
+    private Boolean available;
 }
