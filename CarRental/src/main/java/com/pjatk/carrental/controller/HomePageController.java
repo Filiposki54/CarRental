@@ -28,7 +28,7 @@ public class HomePageController {
     }
     @GetMapping("rent_car")
     public String rentCar(Model model){
-        model.addAttribute("cars",carService.getAllCars());
+        model.addAttribute("cars",carService.getAllAvailableCars());
         return "rent_car";
     }
 }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -25,6 +26,16 @@ public class CarService {
     public Car getCarById(Long id){
         Car car = carRepository.findCarById(id).get();
         return car;
+    }
+    public void serCarAsUnavailable(Long id){
+        Car car = getCarById(id);
+        car.setAvailable(false);
+        carRepository.save(car);
+    }
+    public void serCarAsAvailable(Long id){
+        Car car = getCarById(id);
+        car.setAvailable(true);
+        carRepository.save(car);
     }
 
     public String addCarToRepo(Car car){
