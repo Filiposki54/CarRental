@@ -5,7 +5,6 @@ import com.pjatk.carrental.service.CarService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class CarController {
@@ -16,7 +15,7 @@ public class CarController {
     }
     @GetMapping("carList")
     public List<Car> getCars(){
-        return carService.getAllCars();
+        return carService.getAllAvailableCars();
     }
     @GetMapping("Car/{id}")
     public Car getCar(@PathVariable long id){

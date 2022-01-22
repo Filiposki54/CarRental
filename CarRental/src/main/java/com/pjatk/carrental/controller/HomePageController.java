@@ -1,5 +1,6 @@
 package com.pjatk.carrental.controller;
 
+import com.pjatk.carrental.model.Car;
 import com.pjatk.carrental.model.RegistrationRequest;
 import com.pjatk.carrental.service.CarService;
 import org.springframework.http.ResponseEntity;
@@ -19,14 +20,7 @@ public class HomePageController {
     public String index(){
         return "index";
     }
-    @GetMapping("user")
-    public ResponseEntity user(){
-        return ResponseEntity.ok("<h1>Hello User</1>");
-    }
-    @GetMapping("admin")
-    public ResponseEntity admin(){
-        return ResponseEntity.ok("<h1>Hello Admin</1>");
-    }
+
     @GetMapping("register")
     public String showRegisterPanel(Model model){
         model.addAttribute("request",new RegistrationRequest());
