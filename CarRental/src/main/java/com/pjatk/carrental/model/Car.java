@@ -18,9 +18,9 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String plates;
-    private Integer productionYear;
+    private Integer production_year;
     private String model;
-    private String carBrand;
-    private String pricePerDay;
+    private String car_brand;
+    private String price_per_day;
     private Boolean available;
 }

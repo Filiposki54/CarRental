@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -18,7 +17,7 @@ public class CarService {
     public List<Car> getAllCars(){
         return carRepository.findAll();
     }
-    public Optional<Car> getAllAvailableCars(){
+    public List<Car> getAllAvailableCars(){
         return carRepository.findCarByAvailable(true);
     }
 
