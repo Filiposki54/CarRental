@@ -23,7 +23,10 @@ public class RentService {
         rent.setRent_date(new Date());
         rent.setUser(userService.getCurrentUser());
         rent.setCar(carService.getCarById(id));
+        carService.serCarAsUnavailable(id);
         repository.save(rent);
+
+
     }
     public List<Rent> getRents(){
         return repository.findAll();

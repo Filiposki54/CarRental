@@ -15,7 +15,7 @@ public class CarController {
     }
     @GetMapping("carList")
     public List<Car> getCars(){
-        return carService.getAllAvailableCars();
+        return carService.getAllCars();
     }
     @GetMapping("Car/{id}")
     public Car getCar(@PathVariable long id){
